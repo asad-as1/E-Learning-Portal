@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { Typography } from '@mui/material'
+import Header from './components/Header/Header';
+import { Outlet } from 'react-router-dom'
 
 function App() {
 
   return (
     <>
-    <h1>hello</h1>
+       < Header />
+       <Typography variant='h6' component='h1'>Welcome to My E-Learning-App</Typography>
+       <Outlet />
     </>
   )
 }
