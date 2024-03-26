@@ -1,13 +1,12 @@
-import { Typography } from '@mui/material'
-import Header from './components/Header/Header';
+import Home from './Pages/Home/Home';
 import { Outlet } from 'react-router-dom'
+import Header from './components/Header/Header';
 
 function App() {
 
   return (
     <>
-       < Header />
-       <Typography variant='h6' component='h1'>Welcome to My E-Learning-App</Typography>
+       <Header />
        <Outlet />
     </>
   )

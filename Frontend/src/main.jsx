@@ -1,16 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import App from './App.jsx'
 import './index.css'
-import Profile from './Profile/Profile.jsx'
+import App from './App.jsx'
+import Home from './Pages/Home/Home.jsx'
+import Profile from './Pages/Profile/Profile.jsx'
+import Login from './Pages/Login/Login.jsx'
+import Logout from './Pages/Logout/Logout.jsx'
+import Register from './Pages/Register/Register.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route path='/profile' element={< Profile />} />
-      {/* <Route path='contact' element={<Contact />} />
-      <Route path='products' element={<Products />} /> */}
+      <Route path='/' element={<Home />} />
+      <Route path='/profile' element={<Profile />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/logout' element={<Logout />} />
+      <Route path='/register' element={<Register />} />
     </Route>
   )
 )
