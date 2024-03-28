@@ -29,6 +29,10 @@
         text-decoration: none !important;
     }
 }
+.me {
+    display: flex;
+    gap: 1rem;
+}
 
 .buttonGroup {
     display: flex;

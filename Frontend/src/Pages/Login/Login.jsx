@@ -31,6 +31,7 @@ const Login = () => {
       });
 
       const data = await response.json();
+      // console.log(data)
 
       if(response.ok) {
         //Format the user-related data before storing in the cookie
@@ -57,19 +58,7 @@ const Login = () => {
       setLoginError('An error occurred during login. Please try again later.');
     }
   }
-
-  const handleSignOut = () => {
-    // Remove the userData cookie to log the user out
-    Cookies.remove('userData');
-
-    // Reset the user data in the state to trigger a re-render and show the login form again
-    setUserData(null);
-    location.reload();
-    //router.push('/login');
-
-    // console.log(userData)
-  };
-
+  
   return (
     <div className={scss.login}>
       <Typography>Login</Typography>
@@ -104,7 +93,9 @@ const Login = () => {
         <div>
           <p>Logged in as : {userData.userName}</p>
           <p>Is logged in : {userData.isLoggedIn ? 'Yes' : 'No'}</p>
-          <Button variant='contained' onClick={handleSignOut} color={'error'}>Sign Out</Button>
+          <Button variant='contained' color={'error'}>
+            <Link to='/logout'>Sign Out</Link>
+          </Button>
         </div>
       )}
     </div>

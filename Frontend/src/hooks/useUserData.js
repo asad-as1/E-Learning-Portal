@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 
-const UserDataType = {
+export const UserDataType = {
     authToken: String,
     userName: String,
     isLoggedIn: Boolean,
 };
 
-export { UserDataType };
-
 const useUserData = () => {
-   
+    
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
@@ -37,4 +35,6 @@ const useUserData = () => {
     
 };
 
-export default useUserData;
+export { useUserData }; // Exporting the useUserData function separately
+
+export default useUserData; // Exporting the useUserData function as default

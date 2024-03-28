@@ -1,12 +1,13 @@
-import Home from './Pages/Home/Home';
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header/Header';
+import { useUserData } from './hooks/useUserData';
 
 function App() {
-
+  const userData = useUserData();
+  // console.log(userData)
   return (
     <>
-       <Header />
+      <Header  userData={userData}/>
        <Outlet />
     </>
   )
