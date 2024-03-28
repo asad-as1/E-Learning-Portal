@@ -31,7 +31,7 @@ const Login = () => {
       });
 
       const data = await response.json();
-      // console.log(data)
+      console.log(data)
 
       if(response.ok) {
         //Format the user-related data before storing in the cookie
@@ -42,14 +42,12 @@ const Login = () => {
         };
 
         Cookies.set('userData', JSON.stringify(userData), {expires: 1});// Expires in 1 day
+        // console.log(Cookies.get("userData"))
 
-        // Update the user data in the state to trigger re-render
         setUserData(userData);
-        location.reload()
-        // Redirect to the profile page
-        // router.push('/profile'); // Replace '/profile' with your actual profile page route
-
         // console.log(userData)
+        location.reload()
+        
       } else {
         setLoginError(data.message[0].message[0].message);
       }
@@ -83,7 +81,7 @@ const Login = () => {
               margin='normal'
           />
           {loginError && <p style={{color: 'red'}}>{loginError}</p>}
-          <Button type='submit' variant='contained' color='success' onClick={handleLogin} style={{marginRight: '0.5rem'}}>
+          <Button type='submit' variant='contained' color='success' style={{marginRight: '0.5rem'}}>
             Login
           </Button>
           <Button variant='contained' color={'info'}><Link to='/register'>Register</Link></Button>

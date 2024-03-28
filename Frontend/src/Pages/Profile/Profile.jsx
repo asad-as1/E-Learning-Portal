@@ -13,7 +13,7 @@ const Profile = () => {
     // Read the user data cookie and parse the JSON data
     const userDataCookie = Cookies.get("userData");
     const parsedUserData = JSON.parse(userDataCookie || "{}");
-    console.log(parsedUserData)
+    // console.log(parsedUserData)
     setIsLoggedIn(parsedUserData.isLoggedIn || null);
   }, []);
 

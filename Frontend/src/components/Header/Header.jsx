@@ -3,7 +3,7 @@ import scss from './Header.module.scss'
 import { Link } from 'react-router-dom'
 
 const Header = ({ userData }) => {
-  //  console.log(userData?.authToken);
+  //  console.log(userData);
 
   return (
     <>
