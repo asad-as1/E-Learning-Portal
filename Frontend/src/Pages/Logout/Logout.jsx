@@ -20,7 +20,7 @@ const Logout = () => {
     const handleSignOut = () => {
       Cookies.remove('userData');
       setUserData(null);
-      location.reload()
+      // location.reload()
     };
 
   return (

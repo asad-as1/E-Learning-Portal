@@ -46,7 +46,7 @@ const Login = () => {
 
         setUserData(userData);
         // console.log(userData)
-        location.reload()
+        // location.reload()
         
       } else {
         setLoginError(data.message[0].message[0].message);
