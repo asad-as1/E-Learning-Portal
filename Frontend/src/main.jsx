@@ -8,6 +8,9 @@ import Profile from './Pages/Profile/Profile.jsx'
 import Login from './Pages/Login/Login.jsx'
 import Logout from './Pages/Logout/Logout.jsx'
 import Register from './Pages/Register/Register.jsx'
+import CoursePage from './courses/page.jsx'
+import LessonPage from './courses/CourseId/lessons/LessonsPage.jsx'
+ 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +20,8 @@ const router = createBrowserRouter(
       <Route path='/login' element={<Login />} />
       <Route path='/logout' element={<Logout />} />
       <Route path='/register' element={<Register />} />
+      <Route path='/courses' element={<CoursePage />} />
+      <Route path='/courses/:courseId' element={<LessonPage />} />
     </Route>
   )
 )

@@ -31,22 +31,21 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
 
       if(response.ok) {
         //Format the user-related data before storing in the cookie
         const userData = {
           authToken: data.jwt,
-          userName: data.user.userName,
+          userName: data.user.username,
           isLoggedIn: data.user.confirmed,
         };
 
         Cookies.set('userData', JSON.stringify(userData), {expires: 1});// Expires in 1 day
-        // console.log(Cookies.get("userData"))
 
         setUserData(userData);
-        // console.log(userData)
-        // location.reload()
+        // Navigate('/profile');
+        location.reload()
         
       } else {
         setLoginError(data.message[0].message[0].message);
@@ -59,9 +58,10 @@ const Login = () => {
   
   return (
     <div className={scss.login}>
-      <Typography>Login</Typography>
-      {!userData?.isLoggedIn && (
-        <form onSubmit={handleLogin}>
+      {!userData?.isLoggedIn ? (
+        <div>
+            <form onSubmit={handleLogin}>
+          <Typography>Login</Typography>
           <TextField
               label="Username or Email"
               variant='outlined'
@@ -85,16 +85,16 @@ const Login = () => {
             Login
           </Button>
           <Button variant='contained' color={'info'}><Link to='/register'>Register</Link></Button>
-          </form>
-      )}
-      {userData?.isLoggedIn && (
-        <div>
-          <p>Logged in as : {userData.userName}</p>
-          <p>Is logged in : {userData.isLoggedIn ? 'Yes' : 'No'}</p>
-          <Button variant='contained' color={'error'}>
-            <Link to='/logout'>Sign Out</Link>
-          </Button>
+            </form>
         </div>
+      ):(
+          <div>
+              <p>Logged in as: {userData.userName}</p>
+              <p>Is logged in: {userData.isLoggedIn ? 'Yes' : 'No'}</p>
+              <Button variant="contained" color={'error'}>
+               <Link to='/logout'>Log out</Link>
+              </Button>
+            </div>
       )}
     </div>
   )

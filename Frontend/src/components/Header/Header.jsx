@@ -20,6 +20,7 @@ const Header = ({ userData }) => {
                     <div className={scss.me}>
                      <li><Link to='/'> <Typography color={'white'}>Home</Typography> </Link></li>
                      <li><Link to='/profile'> <Typography color={'white'}>Profile</Typography> </Link></li> 
+                     <li><Link to='/courses'> <Typography color={'white'}>Courses</Typography> </Link></li> 
                     </div>
                  )} 
             </ul>
