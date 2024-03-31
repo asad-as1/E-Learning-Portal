@@ -6,7 +6,7 @@ const useFetchCourseData = () => {
     useEffect(() => {
       async function fetchCourseData() {
         try {
-            const response = await fetch("http://localhost:1337/api/courses?populate=lessons",);
+            const response = await fetch("http://localhost:1337/api/subjects?populate=lessons",);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status:  + ${response.status}`);
             }

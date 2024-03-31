@@ -1,25 +1,29 @@
-"use client";
 import React from "react";
-import useFetchLessonData from "../../../../hooks/useFetchLessonData";
-import CourseHeader from "@/app/components/CourseHeader";
+import useFetchLessonData from '../hooks/useFetchLessonData'
+import CourseHeader from '../components/CourseHeader/CourseHeader'
+import { useLocation, useNavigate } from "react-router-dom";
 
-const LessonPage: React.FC = () => {
-  const urlParts = window.location.pathname.split("/");
-  const lessonId: number = Number(urlParts[urlParts.length - 1]);
-  const courseId: number = Number(urlParts[urlParts.length - 3]);
+const Lesson = () => {
+  const location = useLocation().pathname
+  const locArr = location.split('/')
+  const lessonId = Number(locArr[locArr.length - 1]);
+  const courseId = Number(locArr[locArr.length - 3]);
 
   // Fetch lesson data using the lesson ID
-  const lesson: any = useFetchLessonData(lessonId);
+  const lesson = useFetchLessonData(lessonId);
+  const navigate = useNavigate();
 
   return (
     <div>
       {lesson ? (
         <div style={{ maxWidth: "80rem", margin: "auto" }}>
+
           <CourseHeader
             href={`/courses/${courseId}`}
             title={lesson?.title}
             description={lesson?.description}
           />
+
           <iframe
             width="80%"
             height="480"
@@ -30,7 +34,8 @@ const LessonPage: React.FC = () => {
             allowFullScreen
             title="Embedded youtube"
           />
-          <p>{lesson?.description}</p>
+
+          <p>{lesson?.desc}</p>
         </div>
       ) : (
         <p>Loading...</p>
@@ -39,4 +44,4 @@ const LessonPage: React.FC = () => {
   );
 };
 
-export default LessonPage;
+export default Lesson;

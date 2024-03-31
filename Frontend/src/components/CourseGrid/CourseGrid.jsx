@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CourseCard from "../CourseCard/CourseCard";
 import axios from "axios";
 import scss from "./CourseGrid.module.scss";
+
 const CourseGrid = () => {
   // const hero = courses.courses.data
   const [courseData, setCourses] = useState([]);
@@ -9,7 +10,7 @@ const CourseGrid = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       const allCourses = await axios.get(
-        "http://localhost:1337/api/courses?populate=*"
+        "http://localhost:1337/api/subjects/?populate=lessons"
       );
       setCourses(allCourses.data.data);
     };
@@ -19,7 +20,7 @@ const CourseGrid = () => {
   return (
     <div className={scss.CourseGrid}>
       {courseData.map((course) => {
-        // console.log(course.id)
+        // console.log("course", course)
         return (
           <section key={course.id}>
             <CourseCard

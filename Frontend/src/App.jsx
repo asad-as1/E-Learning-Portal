@@ -1,39 +1,42 @@
-import React, {useState, useEffect} from 'react'
-import { Outlet } from 'react-router-dom'
-import Header from './components/Header/Header';
+import React, { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header/Header";
 import Cookies from "js-cookie";
 // import { useUserData } from './hooks/useUserData';
-import { ThemeProvider } from './contexts/theme'
-
+import { ThemeProvider } from "./contexts/theme";
 
 function App() {
-  const userDataCookie = Cookies.get('userData');
-  const userData = JSON.parse(userDataCookie || '{}')
+  const userDataCookie = Cookies.get("userData");
+  const userData = JSON.parse(userDataCookie || "{}");
   // console.log(userData)
 
-  const [themeMode, setThemeMode] = useState("light")
+  const [themeMode, setThemeMode] = useState("light");
 
   const lightTheme = () => {
-    setThemeMode("light")
-  }
+    setThemeMode("100");
+  };
 
   const darkTheme = () => {
-    setThemeMode("dark")
-  }
+    setThemeMode("900");
+  };
 
   // actual change in theme
 
   useEffect(() => {
-    document.querySelector('html').classList.remove("light", "dark")
-    document.querySelector('html').classList.add(themeMode)
-  }, [themeMode])
-  
+    // document.querySelector("html").classList.remove("100", "900");
+    // document.querySelector("html").classList.add(themeMode);
+    console.log(document.querySelector('html'))
+  }, [themeMode]);
+
   return (
-    <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
-       <Header userData={userData}/>
-       <Outlet />
+    <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
+      {/* <h1 className="bg-gray-900">fdfn</h1> */}
+      <div >
+        <Header userData={userData} />
+        <Outlet />
+      </div>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

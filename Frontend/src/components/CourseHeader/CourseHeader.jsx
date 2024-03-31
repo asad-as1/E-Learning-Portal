@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 function CourseHeader(CourseHeaderProps) {
   const { title, user, desc, href } = CourseHeaderProps;
   const navigate = useNavigate()
+
   return (
     <div
       style={{
@@ -18,7 +19,7 @@ function CourseHeader(CourseHeaderProps) {
     >
     
       <IconButton
-      onClick={() => {navigate('/')}}
+        onClick={() => navigate(`${href}`)}
         // href={href || "/courses"}
         aria-label={"Go back to courses"}
         title={"Go back to courses"}
