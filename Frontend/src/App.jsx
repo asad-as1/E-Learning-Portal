@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     // document.querySelector("html").classList.remove("100", "900");
     // document.querySelector("html").classList.add(themeMode);
-    console.log(document.querySelector('html'))
+    console.log(document.querySelector('html').classList)
   }, [themeMode]);
 
   return (

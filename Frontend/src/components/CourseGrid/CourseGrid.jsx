@@ -10,17 +10,17 @@ const CourseGrid = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       const allCourses = await axios.get(
-        "http://localhost:1337/api/subjects/?populate=lessons"
+        "http://localhost:1337/api/subjects/?populate=*"
       );
       setCourses(allCourses.data.data);
     };
     fetchCourse();
   }, []);
-
+//  console.log(courseData)
   return (
     <div className={scss.CourseGrid}>
       {courseData.map((course) => {
-        // console.log("course", course)
+        // console.log("course", course.attributes?.img.data.attributes?.url)
         return (
           <section key={course.id}>
             <CourseCard
@@ -28,6 +28,7 @@ const CourseGrid = () => {
               courseId={course.id}
               title={course.attributes.title}
               desc={course.attributes.desc}
+              img={course.attributes?.img.data.attributes?.url}
             />
           </section>
         );

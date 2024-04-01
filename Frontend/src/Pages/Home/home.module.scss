@@ -1,6 +1,13 @@
 .home {
-    height: 20rem;
+    height: 21rem;
     border-radius: 4px;
-    margin: 2rem ;
-    padding: 2rem;
+    margin: 2rem;
+    padding: 1rem;
+    .img {
+        height: 15rem;
+        width: 100vw;
+        overflow: hidden;
+        border-radius: 4px;
+        margin-top: 1rem;
+    }
 }

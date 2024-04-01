@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography } from "@mui/material";
 import scss from "./register.module.scss";
+import Cookies from 'js-cookie'
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    // When reading the cookie, parse the JSON data
+    const userDataCookie = Cookies.get("userData");
+    const parsedUserData = JSON.parse(userDataCookie || "{}");
+    setUserData(parsedUserData);
+  }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -20,7 +32,21 @@ const Register = () => {
       );
       const data = await response.json();
       // console.log(data.user.confirmed)
-    } catch (error) {
+
+      if (response.ok) {
+        //Format the user-related data before storing in the cookie
+        const userData = {
+          authToken: data.jwt,
+          userName: data.user.username,
+          isLoggedIn: data.user.confirmed,
+        };
+
+        Cookies.set("userData", JSON.stringify(userData), { expires: 1 }); // Expires in 1 day
+
+        setUserData(userData);
+        navigate("/");
+        location.reload();
+    } } catch (error) {
       console.error("Registration error:", error);
     }
   };

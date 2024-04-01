@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TextField, Button, Typography } from "@mui/material";
-import { UserDataType } from "../../hooks/useUserData";
 import scss from "./login.module.scss";
 import Cookies from "js-cookie";
 
@@ -9,7 +8,8 @@ const Login = () => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
-  const [userData, setUserData] = useState(UserDataType);
+  const [userData, setUserData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // When reading the cookie, parse the JSON data
@@ -41,7 +41,7 @@ const Login = () => {
         Cookies.set("userData", JSON.stringify(userData), { expires: 1 }); // Expires in 1 day
 
         setUserData(userData);
-        // Navigate('/profile');
+        navigate("/");
         location.reload();
       } else {
         setLoginError(data.message[0].message[0].message);
@@ -91,16 +91,9 @@ const Login = () => {
           </form>
         </div>
       ) : (
-        <div>
-          <p>Logged in as: {userData.userName}</p>
-          <p>Is logged in: {userData.isLoggedIn ? "Yes" : "No"}</p>
-          <Button variant="contained" color={"error"}>
-            <Link to="/logout">Log out</Link>
-          </Button>
-        </div>
+        ""
       )}
     </div>
   );
 };
-
 export default Login;
