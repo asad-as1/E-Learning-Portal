@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
+import CourseHeader from "../components/CourseHeader/CourseHeader";
 import axios from "axios";
 
 const LessonsPage = () => {
-
   const [courseData, setCourses] = useState([]);
   const location = useLocation();
   let loc = location.pathname;
@@ -24,7 +24,8 @@ const LessonsPage = () => {
   return (
     <div>
       <ul>
-      <h1>All Lessons</h1>
+        <CourseHeader href={"/courses"} title={""} desc={""} />
+        <h1>All Lessons</h1>
         {courseData.length != 0 ? (
           courseData.map((lesson) => {
             return (

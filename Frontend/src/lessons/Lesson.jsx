@@ -1,11 +1,11 @@
 import React from "react";
-import useFetchLessonData from '../hooks/useFetchLessonData'
-import CourseHeader from '../components/CourseHeader/CourseHeader'
+import useFetchLessonData from "../hooks/useFetchLessonData";
+import CourseHeader from "../components/CourseHeader/CourseHeader";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Lesson = () => {
-  const location = useLocation().pathname
-  const locArr = location.split('/')
+  const location = useLocation().pathname;
+  const locArr = location.split("/");
   const lessonId = Number(locArr[locArr.length - 1]);
   const courseId = Number(locArr[locArr.length - 3]);
 
@@ -17,7 +17,6 @@ const Lesson = () => {
     <div>
       {lesson ? (
         <div style={{ maxWidth: "80rem", margin: "auto" }}>
-
           <CourseHeader
             href={`/courses/${courseId}`}
             title={lesson?.title}
