@@ -29,7 +29,7 @@ const CoursePage = () => {
             style={{ width: "90%" }}
             value={searchCourse}
             onChange={(e) => setSearchCourse(e.target.value)}
-            className="px-3 py-2  rounded-lg bg-white text-black outline-none  duration-200 "
+            className="px-3 py-2 text-blue-500 rounded-lg bg-transparent outline-none  duration-200 "
             placeholder="Search Course"
           />
         </div>

@@ -11,28 +11,34 @@ function App() {
   const userData = JSON.parse(userDataCookie || "{}");
   // console.log(userData)
 
-  const [themeMode, setThemeMode] = useState("light");
+  const [themeMode, setThemeMode] = useState(true);
+  const [a, setA] = useState("black");
+  const [bg, setBg] = useState("bg-gray-100");
 
-  const lightTheme = () => {
-    setThemeMode("100");
-  };
-
-  const darkTheme = () => {
-    setThemeMode("900");
-  };
+  const theme = () => {
 
   // actual change in theme
+  setThemeMode(!themeMode);
+    if (themeMode === true) {
+        setBg("bg-gray-900");
+        setA("white")
+    }
+    else {
+      setBg("bg-gray-100");
+      setA("black")
+    }
 
   useEffect(() => {
-    // document.querySelector("html").classList.remove("100", "900");
-    // document.querySelector("html").classList.add(themeMode);
-    console.log(document.querySelector('html').classList)
-  }, [themeMode]);
+    // document.querySelector("html").classList.remove("light", "dark");
+    // document.querySelector("html").classList.add(themeMode  ? "light" : "dark");
+
+  }, [themeMode, bg]); 
+
+}
 
   return (
-    <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
-      {/* <h1 className="bg-gray-900">fdfn</h1> */}
-      <div >
+    <ThemeProvider value={{ themeMode, theme }}>
+      <div className={`text-${a} ${bg}` } >
         <Header userData={userData} />
         <Outlet />
         <Footer/>

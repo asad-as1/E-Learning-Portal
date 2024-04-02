@@ -2,16 +2,13 @@ import React from 'react'
 import useTheme from '../../contexts/theme'
 export default function ThemeBtn() {
     
-    const {themeMode, lightTheme, darkTheme} = useTheme()
+    const { themeMode, theme } = useTheme()
     
     const onChangeBtn = (e) => {
-        const darkModeStatus = e.currentTarget.checked
-        if (darkModeStatus) {
-            darkTheme()
-        } else {
-            lightTheme()
-        }
+        const a = e.currentTarget.checked;
+        a ? theme(false) : theme(true); 
     }
+    
     return (
         <label className="relative inline-flex items-center cursor-pointer">
             <input

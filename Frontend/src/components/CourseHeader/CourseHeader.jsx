@@ -10,7 +10,7 @@ function CourseHeader(CourseHeaderProps) {
   const navigate = useNavigate()
 
   return (
-    <div
+    <div 
       style={{
         display: "flex",
         alignItems: "baseline",
@@ -24,7 +24,7 @@ function CourseHeader(CourseHeaderProps) {
         aria-label={"Go back to courses"}
         title={"Go back to courses"}
       >
-        <ArrowBackIcon color={"action"}></ArrowBackIcon>
+        <ArrowBackIcon color="info"></ArrowBackIcon>
       </IconButton>
       <div>
         <Typography variant="h4" component="h1">
