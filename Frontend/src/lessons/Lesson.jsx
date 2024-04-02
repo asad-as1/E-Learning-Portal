@@ -34,7 +34,7 @@ const Lesson = () => {
             title="Embedded youtube"
           />
 
-          <p>{lesson?.desc}</p>
+          <h1 className="m-12">{lesson?.desc}</h1>
         </div>
       ) : (
         <p>Loading...</p>

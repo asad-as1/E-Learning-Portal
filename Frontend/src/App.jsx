@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Cookies from "js-cookie";
 // import { useUserData } from './hooks/useUserData';
 import { ThemeProvider } from "./contexts/theme";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const userDataCookie = Cookies.get("userData");
@@ -34,6 +35,7 @@ function App() {
       <div >
         <Header userData={userData} />
         <Outlet />
+        <Footer/>
       </div>
     </ThemeProvider>
   );

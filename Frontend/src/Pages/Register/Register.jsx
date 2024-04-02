@@ -10,6 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userData, setUserData] = useState();
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -46,8 +47,16 @@ const Register = () => {
         setUserData(userData);
         navigate("/");
         location.reload();
-    } } catch (error) {
+      }
+        else {
+          alert("Some error occured!! Please try again later")
+          throw new Error("Email already registered.");
+        }
+      } catch (error) {
       console.error("Registration error:", error);
+      setError(error);
+      // console.log(error)
+
     }
   };
 
@@ -81,6 +90,10 @@ const Register = () => {
           fullWidth
           margin="normal"
         />
+        {error != null ? (
+          <Typography className="m-1rem" variant='contained' color="error">Username is not available!!</Typography>
+        ) : ("")}
+        <br></br>
         <Button type="submit" variant="contained" color="primary">
           Register
         </Button>

@@ -23,25 +23,33 @@ const LessonsPage = () => {
 
   return (
     <div>
-      <ul>
-        <CourseHeader href={"/courses"} title={""} desc={""} />
-        <h1>All Lessons</h1>
-        {courseData.length != 0 ? (
-          courseData.map((lesson) => {
-            return (
-              <li key={lesson.id}>
-                <Link to={`/courses/${locId}/lessons/${lesson.id}`}>
-                  <Typography color={"primary"}>
-                    Lesson: {lesson.attributes.title}
-                  </Typography>
-                </Link>
-              </li>
-            );
-          })
-        ) : (
-          <h1>Sorry !! No lessons available for this course.</h1>
-        )}
-      </ul>
+      <CourseHeader href={"/courses"} title={""} desc={""} />
+      <div className="flex justify-center w-full">
+        <div className="p-4 xl:w-1/4 md:w-1/2 w-full ">
+          <div className="h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden">
+            <span className="bg-indigo-500 text-white px-3 py-1 text-md text-center rounded mb-10">
+              All Lessons
+            </span>
+            <ul>
+              {courseData.length != 0 ? (
+                courseData.map((lesson) => {
+                  return (
+                    <li key={lesson.id} className="mb-6">
+                      <Link to={`/courses/${locId}/lessons/${lesson.id}`}>
+                        <Typography color={"primary"}>
+                          Lesson: {lesson.attributes.title}
+                        </Typography>
+                      </Link>
+                    </li>
+                  );
+                })
+              ) : (
+                <h1>Sorry !! No lessons available for this course.</h1>
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
